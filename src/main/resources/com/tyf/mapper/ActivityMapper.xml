@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyf.mapper.ActivityMapper">
+ <insert id="InsertActivity" parameterType="com.tyf.pojo.activity">
+ insert into activity(sid,title,place,content,money,company,submitdate,reply) values(#{sid},#{title},#{place},#{content},#{money},#{company},#{submitdate},#{reply})
+ </insert>
+
+ <select id="SelectByAtySid" resultType="com.tyf.pojo.activity" parameterType="com.tyf.pojo.Page">
+select * from activity where sid=#{sid} limit #{page},#{limit}
+
+ </select>
+ <update id="UpdateReplyByid" parameterType="com.tyf.pojo.activity">
+  update activity
+  <set>
+   <if test="title != null">title=#{title},</if>
+   <if test="place != null">place=#{place},</if>
+   <if test="content != null">content=#{content},</if>
+   <if test="money != null">money=#{money},</if>
+   <if test="company != null">company=#{company},</if>
+   <if test="reply != null">reply=#{reply}</if>
+  </set>
+    where id=#{id}
+ </update>
+
+ <select id="selectByid" resultType="com.tyf.pojo.activity">
+  select * from activity where id=#{id}
+ </select>
+
+
+
+ <select id="CountActivity" resultType="java.lang.Integer">
+  select count(1) from activity
+  <where>
+   <if test="reply != null and reply != ''">
+   AND reply=#{reply}
+   </if>
+   <if test="sid != null and sid != ''">
+    AND sid=#{sid}
+   </if>
+  </where>
+ </select>
+</mapper>

@@ -1,0 +1,46 @@
+*{margin: 0px;
+padding: 0px;}
+.indeXBG{
+	background-color:transparent ;
+}
+
+.indexp{
+	font-family: "楷体";
+	font-size: 50px;
+	color: #4EEE94;
+}
+.BGcolor-greend{
+	background-color: green;
+}
+.BGcolor-red{
+	background-color: red;
+}
+.BodyBg{
+	background-image:url(../image/geometry.jpg) ;
+}
+
+.pimg{
+	width: 150px;
+	height: 150px;
+}
+
+.clearfix:after{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;	
+}
+.uploaddiv{
+	float: left;
+}
+.upload{
+	width: 100px;
+	height: 100px;
+}
+
+.carddiv{
+	height: 400px;
+	width: 500px;
+	margin: 0 auto;
+}

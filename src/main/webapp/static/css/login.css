@@ -1,0 +1,32 @@
+*{margin: 0px;
+ padding: 0px;}
+ 
+ body{
+ 	background-image:url(../image/LoginBG.jpg);
+ }
+ .logindiv{
+ 	width: 400px;
+ 	height: 250px;
+ 	margin: auto;
+ 	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+ }
+.logintext{
+	background-color: transparent;
+	border: 0px;
+	border-bottom: 1px solid white;
+}
+.loginbutton{
+	width: 100px;
+}
+
+.loginp{
+	text-align: center;
+	margin-bottom:50px ;
+	font-family: "楷体";
+	font-size: 30px;
+	color: rgb(240,240,240);
+}

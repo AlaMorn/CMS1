@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyf.mapper.MembersMapper">
+    <select id="selectById" resultType="com.tyf.pojo.members">
+        select * from members where id=#{id}
+    </select>
+    <select id="selectBySid" resultType="com.tyf.pojo.members">
+        select * from members where sid=#{sid}
+    </select>
+
+    <select id="AllSelect" parameterType="com.tyf.pojo.Page" resultType="com.tyf.pojo.members">
+        select * from members
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE "%"#{name}"%"
+            </if>
+            <if test="sid != null and sid != ''">
+                AND sid=#{sid}
+            </if>
+        </where>
+        limit #{page},#{limit}
+    </select>
+    <select id="CountMembers" resultType="java.lang.Integer">
+         select count(1) from members
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE "%"#{name}"%"
+            </if>
+            <if test="sid != null and sid != ''">
+                AND sid=#{sid}
+            </if>
+        </where>
+    </select>
+
+    <update id="UpdataImage">
+        update members
+        <set>
+            <if test="img != null">img=#{img}</if>
+        </set>
+        where sid=#{sid}
+    </update>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyf.mapper.PeopleMapper">
+    <select id="selectBypeopleSid" resultType="com.tyf.pojo.people">
+        select * from people
+        <where>
+            <if test="sid != null and sid != ''">
+                AND sid=#{sid}
+            </if>
+        </where>
+    </select>
+    <select id="SelectByPeople" resultType="com.tyf.pojo.people" parameterType="com.tyf.pojo.Page">
+        select * from people
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE "%"#{name}"%"
+            </if>
+            <if test="sid != null and sid != ''">
+                AND sid=#{sid}
+            </if>
+        </where>
+         limit #{page},#{limit}
+    </select>
+
+    <insert id="insertBypeopleSid" parameterType="com.tyf.pojo.people">
+          insert into people(name,gender,position,motto,sid)  values(#{name},#{gender},#{position},#{motto},#{sid})
+    </insert>
+
+    <delete id="deleteBypeopleId">
+        DELETE FROM people WHERE id = #{id}
+  </delete>
+
+    <select id="selectSid"  resultType="java.lang.String">
+        select Distinct sid from people
+    </select>
+
+
+    <select id="CountPeople" resultType="java.lang.Integer">
+        select count(1) from people
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE "%"#{name}"%"
+            </if>
+            <if test="sid != null and sid != ''">
+                AND sid=#{sid}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

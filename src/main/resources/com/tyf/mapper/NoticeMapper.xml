@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyf.mapper.NoticeMapper">
+<update id="updateByNoticeSid" parameterType="com.tyf.pojo.MainNotice">
+    update notice
+    <trim prefix="set" suffixOverrides=",">
+        <if test="img1 != null">img1=#{img1},</if>
+        <if test="img2 != null">img2=#{img2},</if>
+        <if test="img3 != null">img3=#{img3},</if>
+        <if test="img4 != null">img4=#{img4},</if>
+        <if test="img5 != null">img5=#{img5},</if>
+        <if test="summary != null">summary=#{summary},</if>
+    </trim>
+    where sid=#{sid}
+</update>
+
+
+
+    <select id="selectByMainNoticeSid" resultType="com.tyf.pojo.MainNotice">
+        select * from notice where sid=#{sid}
+    </select>
+</mapper>
